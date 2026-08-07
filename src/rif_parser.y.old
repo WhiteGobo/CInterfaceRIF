@@ -1,0 +1,264 @@
+/* rif.y
+ * `https://www.w3.org/TR/2013/REC-rif-prd-20130205/#Presentation_syntax_.28Informative.29`_
+ * `https://www.w3.org/TR/2013/REC-rif-dtb-20130205/#Shortcuts_for_Constants_in_RIF.27s_Presentation_Syntax`_
+ */
+
+%{
+
+int yyerror(char *s);
+int yylex(void);
+
+void qqwemy_send_triple(Term* subject, char* predicate, Term* object);
+
+%}
+
+%union{
+  Term*		term_val;
+  char*		string_val;
+}
+
+%start	statements
+
+%token	<string_val>	IRIREF_T
+%token	<string_val>	BNODE_T
+%token	<string_val>	STRING_T
+%type	<term_val>	subject
+%type	<string_val>	predicate
+%type	<term_val>	object
+%type	<term_val>	graphid
+%type	<term_val>	langliteral
+%type	<term_val>	typedliteral
+%left	END_TRIPLE
+%left	ATSIGN
+%left	DOUBLECARET
+
+%destructor {free($$);} subject object graphid
+
+%%
+
+
+statements:	/* empty */
+	  	| document
+		| formulalist
+		;
+
+formulalist:	/* empty */
+	   	| formula formulalist
+		;
+
+//Rule Language
+
+document:	irimeta_opt DOCUMENT_T '(' base_opt prefixlist importlist group_opt ')' ;
+irimeta_opt:	| irimeta
+base:		BASE_T '(' ANGLEBRACKIRI_T ')' ;
+prefix:		PREFIX_T '(' name ANGLEBRACKIRI_T ')' ;
+import:		irimeta_opt IMPORT_T '(' locator profile_opt ')' ;
+group:		irimeta_opt GROUP_T strategy_priority_opt '(' ruleorgrouplist ')' ;
+ruleorgrouplist:	/* empty */
+	       		| rule ruleorgrouplist
+	       		| group ruleorgrouplist ;
+strategy_priority_opt:	| const priority_opt ;
+priority_opt:	| const ;
+rule:		irimeta_opt FORALL_T varlist suchthat_opt '(' rule ')'
+    		| clause ;
+suchthat_opt:	| ' such that ' formula formulalist ;
+formulalist_p:	| formula formulalist ;
+varlist:	| var varlist ;
+clause:		implies | action_block ;
+implies:	irimeta_opt IF_T formula THEN_T action_block ;
+locator:	ANGLEBRACKIRI_T ;
+profile_opt:	| ANGLEBRACKIRI_T ;
+
+/*
+ * Action Language:
+ */
+
+action:		irimeta_opt action_desc ;
+actionlist:	| action ;
+action_desc:	atom | retract | modify | execute ;
+assert:		ASSERT_T '(' irimeta_opt assert_target ')' ;
+assert_target:	atom | frame | member ;
+
+// See `https://www.w3.org/TR/2013/REC-rif-prd-20130205/#def-atomic-action`
+retract:	RETRACT_T '(' irimeta_opt retract_target ')' ;
+retract_target:	retract_formula_target | retract_object_or_slots ;
+retract_object_or_slots:	term term_opt ;
+
+modify:		MODIFY_T '(' irimeta_opt frame ')' ;
+execute:	EXECUTE_T '(' irimeta_opt atom ')' ;
+action_block:	irimeta_opt do_or_formulas ;
+do_or_formulas:	DO_T '(' var_assignment_list action actionlist ')'
+	      	| AND_T '(' atom_or_frame_list ')'
+		| atom
+		| frame ;
+atom_or_frame_list:	| irimeta_opt atom_or_frame ;
+atom_or_frame:	atom | frame ;
+var_assignment_list:	irimeta_opt VAR_T irimeta_opt '(' get_or_new ')' ;
+get_or_new:	frame | NEW_T;
+
+/*
+ * Condition Language:
+ */
+
+described_varlist:	| irimeta_opt var ;
+formula:	irimeta_opt undescribed_formula
+undescribed_formula:	AND_T '(' formulalist ')'
+       		| OR_T '(' formulalist ')'
+		| EXISTS_T described_varlist '(' formula ')'
+		| negatedformula
+		| external
+		| atom_frame_equal_member_subclass ;
+
+atom:		uniterm ;
+uniterm:	irimeta_opt const '(' termlist ')' ;
+grounduniterm:	irimeta_opt const '(' groundtermlist ')' ;
+negatedformula:	INEG_T '(' formula ')' ;
+
+atom_frame_equal_member_subclass:
+			   term atom_frame_equal_member_subclass_suffix;
+slotlist:	| term '->' term slotlist ;
+atom_frame_equal_member_subclass_suffix:	'(' termlist ')'
+				       		| '=' term
+						| '#' term
+						| '##' term
+						| '[' slotlist ']'
+termlist:	/* empty */
+		| term termlist
+term:	irimeta_opt term_undescribed
+term_undescribed:	const
+			| var
+			| list
+			| external
+gtermlist:	/* empty */
+	 	| gterm gtermlist
+gterm:	irimeta_opt gterm_undescribed
+gterm_undescribed:	const
+		 	| list
+			| gexternal
+
+gexternal:	EXTERNAL_T '(' guniterm ')'
+external:	EXTERNAL_T '(' uniterm ')'
+uniterm:	const '(' termlist ')'
+guniterm:	const '(' gtermlist ')'
+list:		LIST_T '(' gtermlist ')'
+
+const:		'"' UNICODESTRING_T '"^^' SYMSPACE | constshort
+constshort:	INTEGER_T
+var:		'?' NCNAME_T
+symspace:	ANGLEBRACKIRI_T | curie
+curie:		name ':' name
+
+irimeta_opt:	/* empty */
+	   	| '(*' symspace metadescription '*)'
+metadescription:	/* empty */
+	       		| frame
+	       		| AND_T '(' framelist ')'
+	   	
+
+
+/*************** old *******************/
+
+
+
+
+statements:	/* empty */
+		| triple statements
+		| quad statements
+		;
+
+quad:		subject predicate object graphid END_TRIPLE {my_send_quad($1, $2, $3, $4);};
+triple:		subject predicate object END_TRIPLE {my_send_triple($1, $2, $3);};
+
+subject:	IRIREF_T { $$ = new_term($1, NULL, URI); }
+		| BNODE_T { $$ = new_term($1, NULL, BNODE); };
+
+predicate:	IRIREF_T ;
+
+object:		IRIREF_T { $$ = new_term($1, NULL, URI); }
+		| BNODE_T { $$ = new_term($1 , NULL, BNODE); }
+		| langliteral
+		| typedliteral ;
+
+graphid:	IRIREF_T { $$ = new_term($1, NULL, URI); }
+		| BNODE_T { $$ = new_term($1, NULL, BNODE); };
+
+langliteral:	STRING_T ATSIGN STRING_T { $$ = new_term($1, $3, LANGLITERAL); } ;
+
+typedliteral:	STRING_T DOUBLECARET IRIREF_T { $$ = new_term($1, $3, TYPEDLITERAL); }
+		| STRING_T { $$ = new_term($1, NULL, TYPEDLITERAL); } ;
+
+%%
+
+int yyerror(char *s)
+{
+	extern int yylineno;	// defined and maintained in lex.c
+	extern char *yytext;	// defined and maintained in lex.c
+	fprintf(stderr, "ERROR at symbol %s on line %d\n", yytext, yylineno);
+	return 1;
+}
+
+int nquads_parse(const char* input, TripleHandler* triplehandler, void* user)
+{
+	int err;
+	extern FILE* yyin;
+	FILE* myfile;
+	if (triplehandler == NULL) return 1;
+	myfile = fmemopen((void*) input, strlen(input), "r");
+	if (myfile == NULL) return 1;
+	my_triplehandler = triplehandler;
+	my_triplehandler_context = user;
+	yyin = myfile;
+	err = yyparse();
+	nquads_scanner_tidy_up();
+	fclose(myfile);
+	return err;
+}
+
+int nquads_parse_file(const char* filename, TripleHandler* triplehandler, void* user)
+{
+	int err;
+	FILE* myfile;
+	extern FILE* yyin;
+	if (triplehandler == NULL) return 1;
+	my_triplehandler = triplehandler;
+	my_triplehandler_context = user;
+	myfile = fopen(filename, "r");
+	if (myfile == NULL){
+		fprintf(stderr, "nquads_parser failed to open inputfile\n");
+		return 1;
+	}
+	yyin = myfile;
+	err = yyparse();
+	nquads_scanner_tidy_up();
+	fclose(myfile);
+	return err;
+}
+
+void my_send_triple(Term* subject, char* predicate, Term* object){
+	my_triplehandler(
+		subject->value, subject->type,
+		predicate,
+		object->value, object->suffix, object->type,
+		NULL, BNODE, my_triplehandler_context);
+	free(subject);
+	free(object);
+}
+
+void my_send_quad(Term* subject, char* predicate, Term* object, Term* graph){
+	my_triplehandler(
+		subject->value, subject->type,
+		predicate,
+		object->value, object->suffix, object->type,
+		graph->value, graph->type, my_triplehandler_context);
+	free(subject);
+	free(object);
+	free(graph);
+}
+
+Term* new_term(char* value, char* suffix, TERMTYPE type){
+	Term* new = malloc(sizeof(Term));
+	new->value = value;
+	new->suffix = suffix;
+	new->type = type;
+	return new;
+}

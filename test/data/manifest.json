@@ -1,0 +1,282 @@
+{
+	"@id": "",
+	"sequence": [
+		{
+			"name": "data01",
+			"desription": "only Atom",
+			"@type": "PositiveEntailment",
+			"premise": "data01.rifps",
+			"conclusion": "data01.nq"
+		}, {
+			"name": "data02",
+			"desription": "only frame",
+			"@type": "PositiveEntailment",
+			"premise": "data02.rifps",
+			"conclusion": "data02.nq"
+		}, {
+			"name": "data03",
+			"desription": "only Member",
+			"@type": "PositiveEntailment",
+			"premise": "data03.rifps",
+			"conclusion": "data03.nq"
+		}, {
+			"name": "data04",
+			"desription": "only Subclass",
+			"@type": "PositiveEntailment",
+			"premise": "data04.rifps",
+			"conclusion": "data04.nq"
+		}, {
+			"name": "data05",
+			"desription": "only Equal",
+			"@type": "PositiveEntailment",
+			"premise": "data05.rifps",
+			"conclusion": "data05.nq"
+		}, {
+			"name": "data06",
+			"desription": "test decimal term",
+			"@type": "PositiveEntailment",
+			"premise": "data06.rifps",
+			"conclusion": "data06.nq"
+		}, {
+			"name": "data07",
+			"desription": "test local term",
+			"@type": "PositiveEntailment",
+			"premise": "data07.rifps",
+			"conclusion": "data07.nq"
+		}, {
+			"name": "data08",
+			"desription": "test local term from typed literal",
+			"@type": "PositiveEntailment",
+			"premise": "data08.rifps",
+			"conclusion": "data08.nq"
+		}, {
+			"name": "data09",
+			"desription": "test lang literal",
+			"@type": "PositiveEntailment",
+			"premise": "data09.rifps",
+			"conclusion": "data09.nq"
+		}, {
+			"name": "data10",
+			"desription": "test exists",
+			"@type": "PositiveEntailment",
+			"premise": "data10.rifps",
+			"conclusion": "data10.nq"
+		}, {
+			"name": "data11",
+			"desription": "test INEG",
+			"@type": "PositiveEntailment",
+			"premise": "data11.rifps",
+			"conclusion": "data11.nq"
+		}, {
+			"name": "data12",
+			"desription": "test Not",
+			"@type": "PositiveEntailment",
+			"premise": "data12.rifps",
+			"conclusion": "data12.nq"
+		}, {
+			"name": "data13",
+			"desription": "test and",
+			"@type": "PositiveEntailment",
+			"premise": "data13.rifps",
+			"conclusion": "data13.nq"
+		}, {
+			"name": "data14",
+			"desription": "test or",
+			"@type": "PositiveEntailment",
+			"premise": "data14.rifps",
+			"conclusion": "data14.nq"
+		}, {
+			"name": "data15",
+			"desription": "test external formula",
+			"@type": "PositiveEntailment",
+			"premise": "data15.rifps",
+			"conclusion": "data15.nq"
+		}, {
+			"name": "data16",
+			"desription": "test list",
+			"@type": "PositiveEntailment",
+			"premise": "data16.rifps",
+			"conclusion": "data16.nq"
+		}, {
+			"name": "data17",
+			"desription": "test stacked list",
+			"@type": "PositiveEntailment",
+			"premise": "data17.rifps",
+			"conclusion": "data17.nq"
+		}, {
+			"name": "data18",
+			"desription": "test external term",
+			"@type": "PositiveEntailment",
+			"premise": "data18.rifps",
+			"conclusion": "data18.nq"
+		}, {
+			"name": "data20",
+			"desription": "test empty document",
+			"@type": "PositiveEntailment",
+			"premise": "data20.rifps",
+			"conclusion": "data20.nq"
+		}, {
+			"name": "data21",
+			"desription": "test empty group",
+			"@type": "PositiveEntailment",
+			"premise": "data21.rifps",
+			"conclusion": "data21.nq"
+		}, {
+			"name": "data22",
+			"desription": "test stacked group",
+			"@type": "PositiveEntailment",
+			"premise": "data22.rifps",
+			"conclusion": "data22.nq"
+		}, {
+			"name": "data23",
+			"desription": "test atom as clause",
+			"@type": "PositiveEntailment",
+			"premise": "data23.rifps",
+			"conclusion": "data23.nq"
+		}, {
+			"name": "data24",
+			"desription": "test frame as clause",
+			"@type": "PositiveEntailment",
+			"premise": "data24.rifps",
+			"conclusion": "data24.nq"
+		}, {
+			"name": "data25",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data25.rifps",
+			"conclusion": "data25.nq"
+		}, {
+			"name": "data26",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data26.rifps",
+			"conclusion": "data26.nq"
+		}, {
+			"name": "data27",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data27.rifps",
+			"conclusion": "data27.nq"
+		}, {
+			"name": "data28",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data28.rifps",
+			"conclusion": "data28.nq"
+		}, {
+			"name": "data29",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data29.rifps",
+			"conclusion": "data29.nq"
+		}, {
+			"name": "data30",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data30.rifps",
+			"conclusion": "data30.nq"
+		}, {
+			"name": "data31",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data31.rifps",
+			"conclusion": "data31.nq"
+		}, {
+			"name": "data32",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data32.rifps",
+			"conclusion": "data32.nq"
+		}, {
+			"name": "data33",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data33.rifps",
+			"conclusion": "data33.nq"
+		}, {
+			"name": "data34",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data34.rifps",
+			"conclusion": "data34.nq"
+		}, {
+			"name": "data35",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data35.rifps",
+			"conclusion": "data35.nq"
+		}, {
+			"name": "data40",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data40.rifps",
+			"conclusion": "data40.nq"
+		}, {
+			"name": "data41",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data41.rifps",
+			"conclusion": "data41.nq"
+		}, {
+			"name": "data42",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data42.rifps",
+			"conclusion": "data42.nq"
+		}, {
+			"name": "data43",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data43.rifps",
+			"conclusion": "data43.nq"
+		}, {
+			"name": "data44",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data44.rifps",
+			"conclusion": "data44.nq"
+		}, {
+			"name": "data45",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data45.rifps",
+			"conclusion": "data45.nq"
+		}, {
+			"name": "data46",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data46.rifps",
+			"conclusion": "data46.nq"
+		}, {
+			"name": "data47",
+			"desription": "",
+			"@type": "PositiveEntailment",
+			"premise": "data47.rifps",
+			"conclusion": "data47.nq"
+		}, {
+			"name": "data50",
+			"desription": "Test if prefixes are accepted",
+			"@type": "PositiveEntailment",
+			"premise": "data50.rifps",
+			"conclusion": "data50.nq"
+		}, {
+			"name": "data51",
+			"desription": "Test working curie expand for atom",
+			"@type": "PositiveEntailment",
+			"premise": "data51.rifps",
+			"conclusion": "data51.nq"
+		}, {
+			"name": "data60",
+			"desription": "Test meta simple iri",
+			"@type": "PositiveEntailment",
+			"premise": "data60.rifps",
+			"conclusion": "data60.nq"
+		}, {
+			"name": "data61",
+			"desription": "Test meta curie",
+			"@type": "PositiveEntailment",
+			"premise": "data61.rifps",
+			"conclusion": "data61.nq"
+		}
+	]
+}

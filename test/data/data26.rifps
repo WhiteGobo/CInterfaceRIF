@@ -1,0 +1,5 @@
+Document (
+  Group (
+    Do ( Retract (<http://example.com/ok>()))
+  )
+)

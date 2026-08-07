@@ -1,0 +1,4 @@
+_:N867bc2741aac4911b343d83efe8efe81 <http://www.w3.org/2007/rif#sentences> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:N867bc2741aac4911b343d83efe8efe81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2007/rif#Group> .
+_:N8ed66753888b4000b2f8d602db6fb5a4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2007/rif#Document> .
+_:N8ed66753888b4000b2f8d602db6fb5a4 <http://www.w3.org/2007/rif#payload> _:N867bc2741aac4911b343d83efe8efe81 .

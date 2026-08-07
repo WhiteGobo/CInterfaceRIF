@@ -1,0 +1,4 @@
+Document (
+  Prefix ( ex <http://example.com/> )
+  (* ex:group *) Group ()
+)

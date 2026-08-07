@@ -1,0 +1,7 @@
+{
+    global:
+        free_RIFPSParser;
+	parse_rifps;
+    local:
+        *;    # Hide all other symbols
+};

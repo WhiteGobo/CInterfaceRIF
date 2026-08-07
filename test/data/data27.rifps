@@ -1,0 +1,5 @@
+Document (
+  Group (
+    Do ( Execute (<http://example.com/ok>()))
+  )
+)

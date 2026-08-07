@@ -1,0 +1,5 @@
+Document (
+  Group (
+    Forall ?x (<http://example.org/ok>(?x))
+  )
+)

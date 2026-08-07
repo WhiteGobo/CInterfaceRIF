@@ -1,0 +1,5 @@
+Document (
+  Group (
+    If <http://example.org/ok>() Then <http://example.org/okok>()
+  )
+)

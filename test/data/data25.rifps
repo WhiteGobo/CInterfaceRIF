@@ -1,0 +1,5 @@
+Document (
+  Group (
+    Do ( Assert (<http://example.com/ok>()))
+  )
+)

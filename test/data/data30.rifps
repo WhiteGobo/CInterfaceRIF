@@ -1,0 +1,8 @@
+Document (
+  Group (
+    Do ( 
+      (?x <http://example.org/example#o>[<http://example.org/example#a> -> ?x])
+      Assert( <http://example.com/ok>(?x) )
+    )
+  )
+)

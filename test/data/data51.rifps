@@ -1,0 +1,6 @@
+Document (
+  Prefix ( ex <http://example.com/> )
+  Group (
+    ex:ok()
+  )
+)

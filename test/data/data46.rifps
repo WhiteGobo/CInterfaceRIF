@@ -1,0 +1,5 @@
+Document (
+  Group (
+    <http://example.org/x> # <http://example.org/X> :- <http://example.org/ok>()
+  )
+)

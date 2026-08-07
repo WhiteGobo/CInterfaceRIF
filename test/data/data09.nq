@@ -1,0 +1,9 @@
+_:N18dad3a889dc4928ae7ab847373a1d7c <http://www.w3.org/2007/rif#op> _:N2200d71b9e584546b3b08840eaa1eb5a .
+_:N18dad3a889dc4928ae7ab847373a1d7c <http://www.w3.org/2007/rif#args> _:N1c3960b754e14fc9bf0da0c213604c97 .
+_:N1c3960b754e14fc9bf0da0c213604c97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:N2200d71b9e584546b3b08840eaa1eb5a <http://www.w3.org/2007/rif#constIRI> "http://example.com/ok"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+_:N1c3960b754e14fc9bf0da0c213604c97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N2cc8b52683fb4dcdbe412e87111d26a5 .
+_:N2cc8b52683fb4dcdbe412e87111d26a5 <http://www.w3.org/2007/rif#value> "some text"@en .
+_:N18dad3a889dc4928ae7ab847373a1d7c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2007/rif#Atom> .
+_:N2cc8b52683fb4dcdbe412e87111d26a5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2007/rif#Const> .
+_:N2200d71b9e584546b3b08840eaa1eb5a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2007/rif#Const> .

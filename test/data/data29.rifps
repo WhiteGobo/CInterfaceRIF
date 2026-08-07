@@ -1,0 +1,9 @@
+Document (
+  Group (
+    Do ( 
+      (?x New())
+      (?y New())
+      Assert(<http://example.com/ok>(?x ?y))
+    )
+  )
+)

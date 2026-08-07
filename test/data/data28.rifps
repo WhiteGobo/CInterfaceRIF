@@ -1,0 +1,7 @@
+Document (
+  Group (
+    Do ( Modify (
+      <http://example.org/example#o>[<http://example.org/example#a> -> 2]
+    ))
+  )
+)

@@ -1,0 +1,9 @@
+Document (
+  Group (
+    Do ( 
+      Retract(
+        <http://example.org/example#o> <http://example.org/example#a>
+      )
+    )
+  )
+)

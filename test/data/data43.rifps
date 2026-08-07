@@ -1,0 +1,7 @@
+Document (
+  Group (
+    Forall ?x such that <http://example.org/ok>(?x) (
+      <http://example.org/okok>(?x)
+    )
+  )
+)
