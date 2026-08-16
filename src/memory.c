@@ -429,6 +429,7 @@ Formula* Formula_new_subclass(Term* sub, Term* super){
 	ret->subclass = malloc(sizeof(Subclass));
 	ret->subclass->sub = sub;
 	ret->subclass->super = super;
+	ret->subclass->meta = Meta_new();
 	return ret;
 }
 Formula* Formula_new_equal(Term* left, Term* right){
@@ -437,6 +438,7 @@ Formula* Formula_new_equal(Term* left, Term* right){
 	ret->equal = malloc(sizeof(Equal));
 	ret->equal->left = left;
 	ret->equal->right = right;
+	ret->equal->meta = Meta_new();
 	return ret;
 }
 
